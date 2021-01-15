@@ -1,0 +1,39 @@
+ALGORITHM Sentence
+
+VAR
+    sentence: string;
+    i: INTEGER := 0; 
+    w: INTEGER  := 0; 
+    v: INTEGER := 0;
+
+BEGIN
+
+    REPEAT
+        write("write a sentence that ends with a point");
+        read(sentence);
+    UNTIL (sentence[0]<>'') // à fin de s'assurer que l'utilisateur a saisit quelque choses.
+
+    WHILE (sentence[i]<>'.') DO
+
+        IF (sentence[i] := " ") AND ((sentence[i+1]<>" ") OR (sentence[i+1]<>".")) THEN // on ignore le cas de double espace, se commance ou se termine pas un espace.
+            w := w + 1;
+        END_IF
+
+        SWITCH (sentence[i]) DO
+            case "a" : v := v+1; break;
+            case "e" : v := v+1; break;
+            case "o" : v := v+1; break;
+            case "u" : v := v+1; break;
+            case "i" : v := v+1; break;
+            case "y" : v := v+1; break;
+        END_SWITCH
+
+        i := i+1;
+
+    END_WHILE
+
+    write("length of the sentence = ", i); // la dérniére itération se termine déjas avec i+1 ce qui est bien la langueur d'une chaine de caractére.
+    write("nbr of vowels =", v);
+    write("Nbr of words =", w); //méme-si la phrase se commance ou se termine avec un espace, elle n'aura pas d'effet sur le calcule.
+
+END
